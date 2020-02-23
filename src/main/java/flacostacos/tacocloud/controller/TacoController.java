@@ -8,6 +8,6 @@ public class TacoController {
 
     @GetMapping("/")
     public String home() {
-        return "tacos";
+        return "home";
     }
 }

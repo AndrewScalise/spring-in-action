@@ -1,6 +1,7 @@
 package flacostacos.tacocloud.controller;
 
 import flacostacos.tacocloud.model.Ingredient;
+import flacostacos.tacocloud.model.Taco;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,8 +38,16 @@ public class DesignTacosController {
                     filterByType(ingredients, type));
         }
 
-        model.addAttribute("design", new TacoController());
+        model.addAttribute("design", new Taco());
 
         return "design";
+    }
+
+    private List<Ingredient> filterByType(
+            List<Ingredient> ingredients, Ingredient.Type type) {
+        return ingredients
+                .stream()
+                .filter(ingredient -> ingredient.getType().equals(type))
+                .collect(Collectors.toList());
     }
 }
